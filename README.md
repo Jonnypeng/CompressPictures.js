@@ -30,7 +30,7 @@
       <tr>
         <td>encoder</td>
         <td>String</td>
-        <td>默认值为"images/png",可以为"image/jpeg"</td>
+        <td>默认值为"image/png",可以为"image/jpeg"</td>
       </tr>
     </tbody>
   </table>
