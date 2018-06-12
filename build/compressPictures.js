@@ -25,6 +25,7 @@ class compressPictures{
 		this.canvas.setAttribute("height",this.size.compress.height);
 		this.canvas.style.display = "none";
 		document.body.append(this.canvas);
+		alert(this.orientation);
 		if(this.orientation==1 || undefined){
 			this.ctx.drawImage(
 				this.imgData,
