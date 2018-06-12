@@ -16,47 +16,27 @@ class compressPictures{
 		var img = this.imgData;
 		var orient;
 		EXIF.getData(img, function () {
-          orient = EXIF.getTag(this, 'Orientation');
-    });
+			orient = EXIF.getTag(this, 'Orientation');
+		});
 		return orient;
 	}
 	get compress(){
-		this.canvas.setAttribute("width",this.size.compress.width);
-		this.canvas.setAttribute("height",this.size.compress.height);
 		this.canvas.style.display = "none";
 		document.body.append(this.canvas);
-		console.log(this.orientation);
 		if(this.orientation==1 || this.orientation==undefined){
-			this.ctx.drawImage(
-				this.imgData,
-				0,
-				0,
-				this.size.natural.width,
-				this.size.natural.height,
-				0,
-				0,
-				this.size.compress.width,
-				this.size.compress.height);
+			this.canvas.setAttribute("width",this.size.compress.width);
+			this.canvas.setAttribute("height",this.size.compress.height);
+			this.ctx.drawImage( this.imgData, 0, 0, this.size.natural.width, this.size.natural.height, 0, 0, this.size.compress.width, this.size.compress.height);
 			this.DataURL = this.canvas.toDataURL(this.encoder);
 			document.body.removeChild(this.canvas);
 			return this.DataURL;
 		}else if(this.orientation==6){
 			this.canvas.setAttribute("height",this.size.compress.width);
 			this.canvas.setAttribute("width",this.size.compress.height);
-			console.log(this.orientation);
 			this.ctx.setTransform(1,0,0,1,0,0);
 			this.ctx.rotate((Math.PI/180)*90);
 			this.ctx.translate(0,this.size.compress.height*-1);
-			this.ctx.drawImage(
-				this.imgData,
-				0,
-				0,
-				this.size.natural.width,
-				this.size.natural.height,
-				0,
-				0,
-				this.size.compress.width,
-				this.size.compress.height);
+			this.ctx.drawImage( this.imgData, 0, 0, this.size.natural.width, this.size.natural.height, 0, 0, this.size.compress.width, this.size.compress.height);
 			this.DataURL = this.canvas.toDataURL(this.encoder);
 			document.body.removeChild(this.canvas);
 			return this.DataURL;
