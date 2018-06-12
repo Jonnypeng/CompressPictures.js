@@ -30,6 +30,7 @@ class compressPictures{
 			this.size.compress.width,
 			this.size.compress.height);
 		this.DataURL = this.canvas.toDataURL(this.encoder);
+		document.body.removeChild(this.canvas);
 		return this.DataURL;
 	}
 }
