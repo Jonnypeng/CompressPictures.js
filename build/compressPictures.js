@@ -27,10 +27,7 @@ class compressPictures{
 	get compress(){
 		//this.orientation = 1 || 6 || undefined;
 		alert(this.orientation);
-		if(typeof this.orientation != Number){
-			this.orientation = "no-exif";
-		}
-		if(this.orientation==1 || "no-exif"){
+		if(this.orientation==1 || undefined){
 		console.log(this.orientation);
 			this.ctx.drawImage(
 				this.imgData,
