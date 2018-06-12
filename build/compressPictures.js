@@ -25,10 +25,7 @@ class compressPictures{
 		return orient;
 	}
 	get compress(){
-		//this.orientation = 1 || 6 || undefined;
-		alert(this.orientation);
 		if(this.orientation==1 || undefined){
-		console.log(this.orientation);
 			this.ctx.drawImage(
 				this.imgData,
 				0,
