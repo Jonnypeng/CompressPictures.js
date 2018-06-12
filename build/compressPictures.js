@@ -26,7 +26,7 @@ class compressPictures{
 	}
 	get compress(){
 		//this.orientation = 1 || 6 || undefined;
-		alert(typeof this.orientation + ":" ＋ this.orientation);
+		alert(this.orientation);
 		if(typeof this.orientation != Number){
 			this.orientation = "no-exif";
 		}
