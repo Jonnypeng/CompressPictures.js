@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+		<head>
+				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+				<title>compress pictures</title>
+				<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap-grid.css">
+				<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		</head>
+		<body>
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+						<div class="jumbotron">
+								<h1>欢迎使用CompressPictures.js</h1>
+								<p>这是压缩图片的实例。</p>
+						</div>
+						</div>
+					</div>
+						<div class="row">
+								<div class="col-xs-12 col-md-12">
+									<div class="form-group" style="margin: 10px 0px;">
+													<label class="sr-only" for="inputfile"></label>
+													<input id="selectImage" type="file" id="inputfile" accept="image/*">
+									</div>
+									<div class="thumbnail">
+										<img id="result" src="" alt="" class="img-responsive">
+										<div id="coption" style="display:none">
+											<h3>原始尺寸<small id="natural">123*233</small></h3>
+											<h4>压缩尺寸<small id="compress">123*233</small></h4>
+										</div>
+									</div>
+								</div>
+						</div>
+				</div>
+				<script src="build/compressPictures.js"></script>
+				<script>
+					var simg = document.getElementById("selectImage");
+					simg.addEventListener("change",simgHandle,false);
+
+					var tempImg = new Image();
+					var result = document.getElementById("result");
+
+					function simgHandle(e){
+							var file = e.target.files[0];
+							var fileType = file.type.match(/image/);
+							if(fileType){
+								fileReader();
+									}else{
+							return false;
+							};
+
+							function fileReader(){
+								var reader = new FileReader();
+								reader.readAsDataURL(file);
+								reader.addEventListener("load",output,false);
+							};
+
+							function output(e){
+									tempImg.src = e.currentTarget.result;
+									tempImg.onload = function (){
+											compress();
+									};
+							};
+					};
+
+					function compress(){
+						var data = new compressPictures(tempImg,0.3,"image/jpeg");
+						result.setAttribute("src",data.compress());
+						document.getElementById("coption").style.display = "block";
+						document.getElementById("natural").innerHTML = data.size.natural.width + " * " + data.size.natural.height;
+						document.getElementById("compress").innerHTML = data.size.compress.width + " * " + data.size.compress.height;
+					};
+				</script>
+		</body>
+</html>

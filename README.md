@@ -1,2 +1,2 @@
 # CompressPictures.js
-前端压缩图片
+通过canvas压缩原始图片的尺寸，从而实现压缩图片的目的；
