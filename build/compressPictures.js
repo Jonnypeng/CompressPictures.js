@@ -18,13 +18,13 @@ class compressPictures{
 		EXIF.getData(img, function () {
           orient = EXIF.getTag(this, 'Orientation');
     });
+		return orient;
+	}
+	get compress(){
 		this.canvas.setAttribute("width",this.size.compress.width);
 		this.canvas.setAttribute("height",this.size.compress.height);
 		this.canvas.style.display = "none";
 		document.body.append(this.canvas);
-		return orient;
-	}
-	get compress(){
 		if(this.orientation==1 || undefined){
 			this.ctx.drawImage(
 				this.imgData,
