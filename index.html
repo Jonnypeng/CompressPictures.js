@@ -1,124 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-		<head>
-				<meta charset="UTF-8">
-				<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-				<title>compress pictures</title>
-				<link rel="stylesheet" href="css/bootstrap.min.css">
-		</head>
-		<body>
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-md-12">
-						<div class="jumbotron">
-								<h3>欢迎使用CompressPictures.js</h3>
-								<p>这是压缩图片的实例。</p>
-						</div>
-						</div>
-					</div>
-						<div class="row">
-								<div class="col-xs-12 col-md-12">
-									<div class="form-group" style="margin: 10px 0px;">
-													<label class="sr-only" for="inputfile"></label>
-													<input id="selectImage" type="file" id="inputfile" accept="image/*">
-									</div>
-									<div class="thumbnail">
-										<img id="result" src="" alt="" class="img-responsive">
-										<div id="coption" style="display:none">
-											<h3>原始尺寸<small id="natural">123*233</small></h3>
-											<h4>压缩尺寸<small id="compress">123*233</small></h4>
-										</div>
-									</div>
-								</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12 col-md-12">
-								<h4>构造：</h4>
-								<p>
-									new compressPictures(imgData,ratio,encoder);
-								</p>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>imgData</td>
-      <td>HTML Img Element	</td>
-      <td>需要压缩的DOM图片元素</td>
-    </tr>
-    <tr>
-      <td>ratio</td>
-      <td>Number</td>
-      <td>默认为0，最大值为1</td>
-    </tr>
-    <tr>
-      <td>encoder</td>
-      <td>String</td>
-      <td>默认值为"images/png",可以为"image/jpeg"</td>
-    </tr>
-  </tbody>
-</table>
-	<h4>压缩方法：</h4>
-	<p>
-		compress();
-	</p>
-	<h4>举例:</h4>
-	<p>
-		var data = new compressPictures(tempImg,0.3,"image/jpeg");<br>
-		img.setAttribute("src",data.compress());
-	</p>
-							</div>
-						</div>
-						<address>
-  <strong>Git-hub项目地址</strong><br>
-  <a href="https://github.com/Jonnypeng/CompressPictures.js">CompressPictures.js</a><br>
-  <strong>Powered by Jonny Peng</strong><br>
-</address>
-
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>compress pictures</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="jumbotron">
+					<h4>CompressPictures.js</h4>
+					<strong>Powered by Jonny Peng</strong><br>
+					<p>这是压缩图片的实例。</p>
 				</div>
-				<script src="build/compressPictures.js"></script>
-				<script>
-					var simg = document.getElementById("selectImage");
-					simg.addEventListener("change",simgHandle,false);
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="form-group" style="margin: 10px 0px;">
+					<label class="sr-only" for="inputfile"></label>
+					<input id="selectImage" type="file" id="inputfile" accept="image/*">
+				</div>
+				<div class="thumbnail">
+					<img id="result" src="" alt="" class="img-responsive">
+					<div id="coption" style="display:none">
+						<h3>原始尺寸<small id="natural">123*233</small></h3>
+						<h4>压缩尺寸<small id="compress">123*233</small></h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<h4>起步：</h4>
+				<p>
+					先导入外部的<a href="https://github.com/exif-js/exif-js">exif.js<a>,这是读取图片exif数据的库，在这里我们主要获取照片的方向,如果方向为1，为正；如果方向为6，则需要旋转;
+					然后导入build的compressPictures.js;
+				</p>
+				<h4>构造：</h4>
+				<p>
+					new compressPictures(imgData,ratio,encoder);
+				</p>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>imgData</td>
+							<td>HTML Img Element	</td>
+							<td>需要压缩的DOM图片元素,可以是img标签，也可以是input类型为file的标签</td>
+						</tr>
+						<tr>
+							<td>ratio</td>
+							<td>Number</td>
+							<td>默认为0，最大值为1</td>
+						</tr>
+						<tr>
+							<td>encoder</td>
+							<td>String</td>
+							<td>默认值为"images/png",可以为"image/jpeg"</td>
+						</tr>
+					</tbody>
+				</table>
+				<h4>属性</h4>
+				<p>
+					compress; #这就是一个已经压缩的base64编码；
+				</p>
+				<h4>举例:</h4>
+				<p>
+					var data = new compressPictures(tempImg,0.3,"image/jpeg");<br>
+					img.setAttribute("src",data.compress);
+				</p>
+			</div>
+		</div>
+		<address>
+			<strong>Git-hub项目地址</strong><br>
+			<a href="https://github.com/Jonnypeng/CompressPictures.js">CompressPictures.js</a><br>
+		</address>
 
-					var tempImg = new Image();
-					var result = document.getElementById("result");
+	</div>
+	<script src="js/exif.js"></script>
+	<script src="build/compressPictures.js"></script>
+	<script>
+	window.onload = init();
+	function init(){
+		var simg = document.getElementById("selectImage");
+		simg.addEventListener("change",simgHandle,false);
 
-					function simgHandle(e){
-							var file = e.target.files[0];
-							var fileType = file.type.match(/image/);
-							if(fileType){
-								fileReader();
-									}else{
-							return false;
-							};
+		var tempImg = new Image();
+		var result = document.getElementById("result");
 
-							function fileReader(){
-								var reader = new FileReader();
-								reader.readAsDataURL(file);
-								reader.addEventListener("load",output,false);
-							};
+		function simgHandle(e){
+			var file = e.target.files[0];
+			var fileType = file.type.match(/image/);
+			if(fileType){
+				fileReader();
+			}else{
+				return false;
+			};
 
-							function output(e){
-									tempImg.src = e.currentTarget.result;
-									tempImg.onload = function (){
-											compress();
-									};
-							};
-					};
+			function fileReader(){
+				var reader = new FileReader();
+				reader.readAsDataURL(file);
+				reader.addEventListener("load",output,false);
+			};
 
-					function compress(){
-						var data = new compressPictures(tempImg,0.3,"image/jpeg");
-						result.setAttribute("src",data.compress());
-						document.getElementById("coption").style.display = "block";
-						document.getElementById("natural").innerHTML = data.size.natural.width + " * " + data.size.natural.height;
-						document.getElementById("compress").innerHTML = data.size.compress.width + " * " + data.size.compress.height;
-					};
-				</script>
-		</body>
+			function output(e){
+				tempImg.src = e.currentTarget.result;
+				tempImg.onload = function (){
+					compress();
+				};
+			};
+		};
+
+		function compress(){
+			var data = new compressPictures(tempImg,0.3,"image/jpeg");
+			result.setAttribute("src",data.compress);
+			document.getElementById("coption").style.display = "block";
+			document.getElementById("natural").innerHTML = data.size.natural.width + " * " + data.size.natural.height;
+			document.getElementById("compress").innerHTML = data.size.compress.width + " * " + data.size.compress.height;
+		};
+	};
+	</script>
+</body>
 </html>
