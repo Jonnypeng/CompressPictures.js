@@ -1,11 +1,11 @@
 class compressPictures{
-	constructor(imgData,ratio = 0.5,encoder = "image/png"){
+	constructor(imgData,scale = 0.5,encoder = "image/png"){
 		this.imgData = imgData;
-		this.ratio = ratio;
+		this.scale = scale;
 		this.encoder = encoder;
 		this.size = {
 			natural:{width:imgData.naturalWidth,height:imgData.naturalHeight},
-			compress:{width:imgData.naturalWidth*this.ratio,height:imgData.naturalHeight*this.ratio}
+			compress:{width:imgData.naturalWidth*this.scale,height:imgData.naturalHeight*this.scale}
 		};
 		this.canvas = document.createElement("canvas");
 		this.ctx = this.canvas.getContext("2d");
@@ -63,8 +63,4 @@ class compressPictures{
 			return false;
 		};
 	}
-};
-
-function compress(){
-		console.log(this);
 };

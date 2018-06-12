@@ -6,7 +6,7 @@
   </p>
   <h4>构造：</h4>
   <p>
-    new compressPictures(imgData,ratio,encoder);
+    new compressPictures(imgData,scale,encoder);
   </p>
   <table class="table table-bordered">
     <thead>
@@ -23,7 +23,7 @@
         <td>需要压缩的DOM图片元素</td>
       </tr>
       <tr>
-        <td>ratio</td>
+        <td>scale</td>
         <td>Number</td>
         <td>默认为0，最大值为1</td>
       </tr>
