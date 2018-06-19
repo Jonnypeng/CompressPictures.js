@@ -1,6 +1,7 @@
 <div class="col-xs-12 col-md-12">
 <h4>起步：</h4>
 <p>
+本项目只适用于移动设备，因为移动设备可以获取exif信息，才能正确对图片方向进行取正;
   先导入外部的<a href="https://github.com/exif-js/exif-js">exif.js<a>,这是读取图片exif数据的库，在这里我们主要获取照片的方向；
   然后导入build的compressPictures.js;
 </p>
