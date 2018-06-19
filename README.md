@@ -1,4 +1,9 @@
 <div class="col-xs-12 col-md-12">
+<h4>起步：</h4>
+<p>
+  先导入外部的<a href="https://github.com/exif-js/exif-js">exif.js<a>,这是读取图片exif数据的库，在这里我们主要获取照片的方向；
+  然后导入build的compressPictures.js;
+</p>
   <h4>起步：</h4>
   <p>
     先导入外部的<a href="https://github.com/exif-js/exif-js">exif.js<a>,这是读取图片exif数据的库，在这里我们主要获取照片的方向,如果方向为1，为正；如果方向为6，则需要旋转;

@@ -40,9 +40,11 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12 col-md-12">
+				<h4>功能：</h4>
+				无论手机如何拍照，手机任意拍照方向，都可以自动将照片旋转为正；传入缩放比例（0~1）,可以将照片从0到1进行压缩
 				<h4>起步：</h4>
 				<p>
-					先导入外部的<a href="https://github.com/exif-js/exif-js">exif.js<a>,这是读取图片exif数据的库，在这里我们主要获取照片的方向,如果方向为1，为正；如果方向为6，则需要旋转,照片本身没有exif信息，按照1的情况进行处理;
+					先导入外部的<a href="https://github.com/exif-js/exif-js">exif.js<a>,这是读取图片exif数据的库，在这里我们主要获取照片的方向；
 					然后导入build的compressPictures.js;
 				</p>
 				<h4>构造：</h4>

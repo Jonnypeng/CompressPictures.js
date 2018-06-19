@@ -31,17 +31,40 @@ class compressPictures{
 			document.body.removeChild(this.canvas);
 			return this.DataURL;
 		}else if(this.orientation==6){
-			this.canvas.setAttribute("height",this.size.compress.width);
+			var offset = (this.size.compress.height - this.size.compress.width)*0.5;
 			this.canvas.setAttribute("width",this.size.compress.height);
-			this.ctx.setTransform(1,0,0,1,0,0);
-			this.ctx.rotate((Math.PI/180)*90);
-			this.ctx.translate(0,this.size.compress.height*-1);
-			this.ctx.drawImage( this.imgData, 0, 0, this.size.natural.width, this.size.natural.height, 0, 0, this.size.compress.width, this.size.compress.height);
+			this.canvas.setAttribute("height",this.size.compress.width);
+			transform.call(this,offset,90);
+			this.ctx.drawImage(this.imgData, 0, 0, this.size.natural.width, this.size.natural.height, this.size.compress.width*0.5*-1 - offset, this.size.compress.height*0.5*-1 - offset, this.size.compress.width, this.size.compress.height);
+			this.DataURL = this.canvas.toDataURL(this.encoder);
+			document.body.removeChild(this.canvas);
+			return this.DataURL;
+		}if(this.orientation==8){
+			var offset = (this.size.compress.height - this.size.compress.width)*0.5;
+			this.canvas.setAttribute("width",this.size.compress.height);
+			this.canvas.setAttribute("height",this.size.compress.width);
+			transform.call(this,offset,-90);
+			this.ctx.drawImage(this.imgData, 0, 0, this.size.natural.width, this.size.natural.height, this.size.compress.width*0.5*-1 + offset, this.size.compress.height*0.5*-1 + offset, this.size.compress.width, this.size.compress.height);
+			this.DataURL = this.canvas.toDataURL(this.encoder);
+			document.body.removeChild(this.canvas);
+			return this.DataURL;
+		}if(this.orientation==3){
+			var offset = (this.size.compress.height - this.size.compress.width)*0.5;
+			this.canvas.setAttribute("height",this.size.compress.height);
+			this.canvas.setAttribute("width",this.size.compress.width);
+			transform.call(this,offset,-180);
+			this.ctx.drawImage(this.imgData, 0, 0, this.size.natural.width, this.size.natural.height, this.size.compress.width*0.5*-1,this.size.compress.height*0.5*-1, this.size.compress.width, this.size.compress.height);
 			this.DataURL = this.canvas.toDataURL(this.encoder);
 			document.body.removeChild(this.canvas);
 			return this.DataURL;
 		}else{
 			return false;
+		};
+
+		function transform(offset,angle){
+			this.ctx.setTransform(1,0,0,1,0,0);
+			this.ctx.translate(this.size.compress.width*0.5,this.size.compress.height*0.5);
+			this.ctx.rotate((Math.PI/180)*angle);
 		};
 	}
 };
