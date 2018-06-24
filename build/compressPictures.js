@@ -55,7 +55,7 @@ var compressPictures = function () {
 				this.DataURL = this.canvas.toDataURL(this.encoder);
 				document.body.removeChild(this.canvas);
 				return this.DataURL;
-			}if (this.orientation == 8) {
+			} else if (this.orientation == 8) {
 				var offset = (this.size.compress.height - this.size.compress.width) * 0.5;
 				this.canvas.setAttribute("width", this.size.compress.height);
 				this.canvas.setAttribute("height", this.size.compress.width);
@@ -64,7 +64,7 @@ var compressPictures = function () {
 				this.DataURL = this.canvas.toDataURL(this.encoder);
 				document.body.removeChild(this.canvas);
 				return this.DataURL;
-			}if (this.orientation == 3) {
+			} else if (this.orientation == 3) {
 				var offset = (this.size.compress.height - this.size.compress.width) * 0.5;
 				this.canvas.setAttribute("height", this.size.compress.height);
 				this.canvas.setAttribute("width", this.size.compress.width);
